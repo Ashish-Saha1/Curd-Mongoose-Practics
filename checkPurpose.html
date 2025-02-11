@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        class Player{
+            constructor(name, number){
+                this.name = name;
+                this.number = number;
+            }
+
+            getDetails(){
+                return {
+                    x: this.name,
+                    y : this.number
+                }
+            }
+
+        }
+
+        const masrafi = new Player('Masrafi', "01717");
+
+        // console.log(`${masrafi.name} has a Number like ${masrafi.number}`)
+
+        const {x, y} = masrafi.getDetails();
+
+        console.log(`${x} has a Number like ${y}`)
+
+
+
+
+    </script>
+</body>
+</html>

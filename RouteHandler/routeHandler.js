@@ -51,4 +51,39 @@ route.post('/many', async(req,res)=>{
 })
 
 
+//Put/update a data
+route.put('/:id', async(req,res)=>{
+    try {
+        const paramId = req.params.id;
+        const userData = await User.updateOne({_id : paramId}, {$set:{"title" : req.body.title, "name" : req.body.name, "contact" : req.body.contact}})
+        res.status(200).json({Mess: userData})
+    } catch (error) {
+        res.status(500).json({MessPut: error})
+    }
+})
+
+
+//Put/update all data
+route.put('/:id', async(req,res)=>{
+    try {
+        const paramContact = req.params.contact;
+        const userData = await User.updateMany({contact : paramContact}, {$set:{"title" : req.body.title, "name" : req.body.name, "contact" : req.body.contact}})
+        res.status(200).json({Mess: userData})
+    } catch (error) {
+        res.status(500).json({MessPut: error})
+    }
+})
+
+
+//delete data
+route.delete('/:id', async(req,res)=>{
+    try {
+        const userData = await User.findByIdAndDelete({_id: req.params.id})
+        res.status(200).json({Mess: userData})
+    } catch (error) {
+        res.status(500).json({MessPost: error})
+    }
+})
+
+
 module.exports = route;
